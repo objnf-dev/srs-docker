@@ -40,8 +40,12 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 	go build mse.go && \
 	cd /root/software/srs-ngb/trunk/research && \
 	cp -rf srs-console /root/software/srs/trunk/objs/nginx/html && \
+	rm -rf /root/software/srs/trunk/objs/nginx/html/srs-console/js/README.md && \
+	cd /root/software/srs-ngb/trunk/src && \
+	cp -rf * /root/software/srs/trunk/objs/nginx/html/srs-console/js/ && \
 	cd /root && \
 	ln -s /root/software/videojs-flow/demo videojs-flow && \
+	ln -s /root/software/srs-ngb srs-ngb && \
 	mkdir /root/sample_conf && \
 	mkdir /root/logs && \
 	mkdir /root/logs/srs_log && \
