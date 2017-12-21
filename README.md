@@ -34,6 +34,14 @@ If you want to customize the settings of the media server,you should run the con
 ### Port Settings:
 See it [HERE](https://github.com/zhouweitong3/srs-docker/blob/v2/Port_Details.md). 
 
+### Link Details: 
+RTMP:`rtmp://<ip>/<app>/<stream>` 
+HLS:`http://<ip>:8080/hls/<app>/<stream>.m3u8`
+HTTP Server:`http://<ip>:8080/` 
+HTTP Flv:`http://<ip>:8080/http/<app>/<stream>.flv` 
+Admin Consle:`http://<ip>:8080/srs-console/index.html` 
+Other links and settings,please refer to the config file.
+
 ### File settings:
 `/root/start.sh` is a soft link of `/root/shell/start_srs.sh` ,which is a sample starting script using srs itself.  
 `/root/stop.sh` is a soft link of `/root/shell/stop.sh` ,which is a sample stoping script.  
