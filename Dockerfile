@@ -4,6 +4,8 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 	cd /root/software && \
 	git clone -b 3.0release https://github.com/ossrs/srs.git && \
 	cd /root/software && \
+	git clone https://github.com/ossrs/srs-ngb.git && \
+	cd /root/software && \
 	git clone https://github.com/ossrs/go-oryx.git && \
 	cd /root/software && \
 	git clone https://github.com/winlinvip/videojs-flow.git && \
@@ -35,6 +37,8 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 	go build server.go && \
 	cd /root/software/videojs-flow/demo && \
 	go build mse.go && \
+	cd /root/software/srs-ngb/trunk/research && \
+	cp -rf srs-console /root/software/srs/trunk/objs/nginx/html && \
 	cd /root && \
 	ln -s /root/software/videojs-flow/demo videojs-flow && \
 	mkdir /root/sample_conf && \
