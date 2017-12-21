@@ -26,7 +26,7 @@ docker run -d \
 		-p 57000-58000:57200-57300 \
 		zhouweitong/srs-docker:v2
 ```  
-It automatically run `/bin/bash -c /root/start.sh` and start the SRS server. 
+It automatically runs `/bin/bash -c /root/start.sh` and starts the SRS server. 
 
 ### Customize settings:
 If you want to customize the settings of the media server,you should run the continer using `docker run -it` ,and add `bash` or `/bin/bash -c "while 1;do sleep 1;done"` parameter at the end of the command.
