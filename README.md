@@ -30,17 +30,17 @@ It automatically runs command `/bin/bash -c /root/start.sh` and starts the liveg
 If you want to customize the settings of the media server,you should run the continer using `docker run -it` ,and add `bash` or `/bin/bash -c "while 1;do sleep 1;done"` parameter at the end of the command. 
 
 ### Port Settings: 
-
-RTMP:`1935` 
-
-HTTP-Flv:`7001` 
-
-HLS:`7002` 
-
+RTMP:`1935`  
+HTTP-Flv:`7001`  
+HLS:`7002`  
 HTTP API:`8090` 
 
+### Link Settings: 
+RTMP:`rtmp://<ip>/live/<stream>`  
+HTTP-FLV:`http://<ip>:7001/live/<stream>.flv`  
+HLS:`http://<ip>:7002/live/<stream>.m3u8`  
 
-### File settings:
+### File settings: 
 `/root/start.sh` is the sample starting shell script for livego.  
 `/root/stop.sh` is the sample stoping shell script for livego.  
 You can change them according to your own condition.  
