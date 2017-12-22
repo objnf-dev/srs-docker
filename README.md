@@ -2,7 +2,13 @@
 
 This repository includes a demo of `Dockerfile` to build a docker image contains [LiveGO Media Server](https://github.com/gwuhaolin/livego) on Cent OS.  
 
-If you want to use the image directly,you can push a ready-made image([See it on Docker Hub](https://hub.docker.com/r/zhouweitong/srs-docker/builds/)).Feel free to try it!  
+If you want to use the image directly,you can push a ready-made image([See it on Docker Hub](https://hub.docker.com/r/zhouweitong/srs-docker/tags/)).Feel free to try it!  
+
+### Feature: 
+Lightweight,easy to use and cross-platform. 
+
+### Notice: 
+The stability of the server is not tested yet.Take it at your own risk. 
 
 ### Pull command:  
 
@@ -23,8 +29,12 @@ It automatically runs command `/bin/bash -c /root/start.sh` and starts the liveg
 ### Customize settings:
 If you want to customize the settings of the media server,you should run the continer using `docker run -it` ,and add `bash` or `/bin/bash -c "while 1;do sleep 1;done"` parameter at the end of the command. 
 
-### Port Settings:
-See it [HERE](https://github.com/zhouweitong3/srs-docker/blob/livego/Port_Details.md).  
+### Port Settings: 
+
+RTMP:`1935` 
+HTTP-Flv:`7001` 
+HLS:`7002` 
+HTTP API:`8090` 
 
 ### File settings:
 `/root/start.sh` is the sample starting shell script for livego.  
