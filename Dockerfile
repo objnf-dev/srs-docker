@@ -54,7 +54,7 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 	mkdir /root/shell
 ADD conf /root/sample_conf
 ADD shell /root/shell
-ADD Port_Details.md /root
+ADD README.md /root
 RUN cd /root/software/srs/trunk/conf && \
 	cp srs.conf srs.conf.bak && \
 	rm -rf srs.conf && \
