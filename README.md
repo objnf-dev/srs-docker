@@ -32,9 +32,13 @@ If you want to customize the settings of the media server,you should run the con
 ### Port Settings: 
 
 RTMP:`1935` 
+
 HTTP-Flv:`7001` 
+
 HLS:`7002` 
+
 HTTP API:`8090` 
+
 
 ### File settings:
 `/root/start.sh` is the sample starting shell script for livego.  
