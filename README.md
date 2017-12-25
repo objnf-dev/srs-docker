@@ -38,6 +38,9 @@ docker run -d \
 ```  
 It automatically runs `/bin/bash -c /root/start.sh` and starts the SRS server. 
 
+### Structure: 
+![SRS Structure Mindmap](https://github.com/zhouweitong3/srs-docker/raw/v3/structure.jpg)  
+
 ### Customize settings:
 If you want to customize the settings of the media server,you should run the continer using `docker run -it` ,and add `bash` or `/bin/bash -c "while 1;do sleep 1;done"` parameter at the end of the command. 
 
