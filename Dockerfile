@@ -17,7 +17,10 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 	git clone https://github.com/golang/net.git && \
 	touch /etc/redhat-release && \
 	sed -i '40c ret=$?; if [[ 0 -eq $ret ]]; then' /root/software/srs/trunk/auto/depends.sh && \
-	sed -i '485a         w->header()->set("Access-Control-Allow-Origin", "*");' /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
+	sed -i '505a         w->header()->set("Access-Control-Allow-Origin", "*");' /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
+	sed -i '704a         w->header()->set("Access-Control-Allow-Origin", "*");' /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
+	sed -i '705a         w->header()->set("Cache-Control", "no-cache");' /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
+	sed -i '738a         w->header()->set("Access-Control-Allow-Origin", "*");' /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
 	cd /root/software/srs/trunk && \
 	sudo ./configure --full && \
 	cd /root/software/srs/trunk && \
