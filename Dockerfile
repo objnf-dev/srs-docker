@@ -37,6 +37,10 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 	./build.sh && \
 	cd /root && \
 	ln -s /root/software/go-oryx/shell go-oryx && \
+	cd /root/software/go-oryx/httpx-static && \
+	go build main.go && \
+	cd /root && \
+	ln -s /root/software/go-oryx/httpx-static https_proxy && \
 	cd /root && \
 	ln -s /root/software/go-oryx/conf go-oryx_conf && \
 	cd /root/software/videojs-flow/demo && \
