@@ -1,5 +1,15 @@
 # SRS 2.0 Docker Image
 
+### Branches:  
+`v2` branch is the file for SRS version 2,bulding the image on a Ubuntu system.  
+`v3` branch is the file for SRS version 3,bulding the image on a Ubuntu system.  
+`v2_ali` branch is the file for SRS version 2,bulding the image on a Cent OS system.  
+`v3_ali` branch is the file for SRS version 3,bulding the image on a Cent OS system.  
+`livego` branch is the file for Livego Media Server.  
+`livego-win` branch is an unoffical Windows build of Livego.  
+`mediasrv` branch is the file for ETS Mediasrv Media Server.  
+
+### Introduction:  
 This repository includes a demo of `Dockerfile` to build a docker image contains [SRS Media Server Verson 2](https://github.com/ossrs/srs/tree/2.0release) on Cent OS.  
 
 If you want to use the image directly,you can push a ready-made image([See it on Docker Hub](https://hub.docker.com/r/zhouweitong/srs-docker/)).Feel free to try it!  
@@ -21,6 +31,7 @@ You can build a RTMP or HTTP-FLV cluster easily as well.
   
 ```
 docker run -d \
+        -p 443:443 \
 		-p 554:554 \
 		-p 1935:1935 \
 		-p 1985:1985 \
@@ -50,7 +61,7 @@ Then you can do the following:
 
 ### Port Settings:
  
-Alternative HTTP Server port:`80`  
+HTTPS Server port:`443`  
 RTSP main port:`554`  
 RTMP:`1935`  
 HTTP API:`1985`  
