@@ -42,9 +42,12 @@ It automatically runs `/bin/bash -c /root/start.sh` and starts the SRS server.
 ![SRS Structure Mindmap](https://github.com/zhouweitong3/srs-docker/raw/v3/structure.jpg)  
 
 ### Customize settings:
-If you want to customize the settings of the media server,you should run the continer using `docker run -it` ,and add `bash` or `/bin/bash -c "while 1;do sleep 1;done"` parameter at the end of the command. 
-
-While finished modifying,please use `nohup` command to run the `/root/start.sh` shell script. 
+Run the container in the interactive mode:`docker run -it` along with the parameters above.  
+Or:run a bash in the current runing container:`docker exec -it <CONTAIER> bash`  
+Then you can do the following:  
+1.Stop the srs server:`/root/stop.sh`  
+2.Modify the configuration file:`vi /root/srs/conf/srs.conf`  
+3.Restart the srs server:`nohup /root/start.sh &`
 
 ### Port Settings:
  
