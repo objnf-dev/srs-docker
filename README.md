@@ -3,8 +3,8 @@
 ### Branches:  
 `v2` branch is the file for SRS version 2,bulding the image on a Ubuntu system.  
 `v3` branch is the file for SRS version 3,bulding the image on a Ubuntu system.  
-`v2_ali` branch is the file for SRS version 2,bulding the image on a Cent OS system.  
-`v3_ali` branch is the file for SRS version 3,bulding the image on a Cent OS system.  
+`aliv2` branch is the file for SRS version 2,bulding the image on a Cent OS system.  
+`aliv3` branch is the file for SRS version 3,bulding the image on a Cent OS system.  
 `livego` branch is the file for Livego Media Server.  
 `livego-win` branch is an unoffical Windows build of Livego.  
 `mediasrv` branch is the file for ETS Mediasrv Media Server.  
