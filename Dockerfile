@@ -1,13 +1,11 @@
 FROM centos:latest
 RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
+    yum clean all && \
     mkdir /root/software && \
     cd /root/software && \
     git clone -b 2.0release https://github.com/ossrs/srs.git && \
-    cd /root/software && \
     git clone https://github.com/ossrs/srs-ngb.git && \
-    cd /root/software && \
     git clone https://github.com/ossrs/go-oryx.git && \
-    cd /root/software && \
     git clone https://github.com/winlinvip/videojs-flow.git && \
     go get github.com/ossrs/go-oryx && \
     go get github.com/ossrs/go-oryx-lib && \
@@ -24,20 +22,17 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
     sed -i '737a         w->header()->set("Access-Control-Allow-Origin", "*");' \
     /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
     cd /root/software/srs/trunk && \
-    sudo ./configure --full && \
-    cd /root/software/srs/trunk && \
-    sudo make && \
+    sudo ./configure --jobs=4 --full && \
+    sudo make -j4 && \
+    yum clean all && \
     cd /root && \
     ln -s /root/software/srs/trunk trunk && \
-    cd /root && \
     ln -s /root/software/srs/trunk srs && \
-    cd /root && \
     ln -s /root/software/srs/trunk/conf srs_conf && \
     cd /root/software/go-oryx && \
     ./build.sh && \
     cd /root && \
     ln -s /root/software/go-oryx/shell go-oryx && \
-    cd /root && \
     ln -s /root/software/go-oryx/conf go-oryx_conf && \
     cd /root/software/go-oryx/httpx-static && \
     go build main.go && \
@@ -45,7 +40,6 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
     ln -s /root/software/go-oryx/httpx-static https_proxy && \
     cd /root/software/videojs-flow/demo && \
     go build server.go && \
-    cd /root/software/videojs-flow/demo && \
     go build mse.go && \
     cd /root/software/srs-ngb/trunk/research && \
     cp -rf srs-console /root/software/srs/trunk/objs/nginx/html && \
@@ -67,27 +61,15 @@ ADD README.md /root
 RUN cd /root/software/srs/trunk/conf && \
     cp srs.conf srs.conf.bak && \
     rm -rf srs.conf && \
-    cd /root/software/srs/trunk/conf && \
     cp /root/sample_conf/srsconfig.conf . && \
-    cd /root/software/srs/trunk/conf && \
     cp /root/sample_conf/srsedge.conf .  && \
-    cd /root/software/srs/trunk/conf && \
     cp /root/sample_conf/srsconfig.conf srs.conf && \
     cd /root/software/go-oryx/conf && \
     cp srs.conf srs.conf.bak && \
     rm -rf srs.conf && \
-    cd /root/software/go-oryx/conf && \
     cp bms.conf srs.conf && \
-    cd /root/software/go-oryx/conf && \
     cp bms.conf /root/sample_conf/go-oryx_bms.conf && \
-    chmod 777 /root/shell/mse.sh && \
-    chmod 777 /root/shell/srs.sh && \
-    chmod 777 /root/shell/go-oryx.sh && \
-    chmod 777 /root/shell/start_srs.sh && \
-    chmod 777 /root/shell/start_go-oryx.sh && \
-    chmod 777 /root/shell/stop.sh && \
-    chmod 777 /root/shell/srs_edge.sh && \
-    chmod 777 /root/shell/start_srs_edge.sh && \
+    chmod -R 777 /root/shell && \
     ln -s /root/shell/start_srs.sh /root/start.sh && \
     ln -s /root/shell/stop.sh /root/stop.sh && \
     ln -s /root/shell/start_srs_edge.sh /root/start_edge.sh
