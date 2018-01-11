@@ -69,13 +69,16 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
     mkdir /root/logs/srs_log && \
     mkdir /root/logs/go-oryx_log && \
     mkdir /root/logs/mse_log && \
-    mkdir /root/shell
+    mkdir /root/shell && \
+	mkdir /root/cert
 # Add conf files,scripts
 ADD conf /root/sample_conf
 ADD shell /root/shell
 ADD README.md /root
+ADD cert /root/cert
 # Copy and link the files
-RUN cd /root/software/srs/trunk/conf && \
+RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
+	cd /root/software/srs/trunk/conf && \
     mv srs.conf srs.conf.bak && \
     ln -s /root/sample_conf/srsconfig.conf srs.conf && \
     ln -s /root/sample_conf/srsedge.conf srsedge.conf  && \
