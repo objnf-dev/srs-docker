@@ -90,5 +90,9 @@ VOLUME ["/root/software/go-oryx/conf","/root/software/srs/trunk/conf","/root/sam
 EXPOSE 1935
 EXPOSE 1985
 EXPOSE 8080
+EXPOSE 8081
+EXPOSE 8082
+EXPOSE 443
+EXPOSE 8443
 # Startup Command
 CMD /bin/bash -c /root/start.sh
