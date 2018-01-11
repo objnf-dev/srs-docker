@@ -21,12 +21,6 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
 # Patch the system checking code,and do some fixing
     touch /etc/redhat-release && \
     sed -i '40c ret=$?; if [[ 0 -eq $ret ]]; then' /root/software/srs/trunk/auto/depends.sh && \
-    sed -i '505a         w->header()->set("Access-Control-Allow-Origin", "*");' \
-    /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
-    sed -i '704a         w->header()->set("Access-Control-Allow-Origin", "*");' \
-    /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
-    sed -i '737a         w->header()->set("Access-Control-Allow-Origin", "*");' \
-    /root/software/srs/trunk/src/app/srs_app_http_stream.cpp && \
 # Install SRS
     cd /root/software/srs/trunk && \
     sudo ./configure --jobs=4 --full && \
@@ -69,13 +63,16 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
     mkdir /root/logs/srs_log && \
     mkdir /root/logs/go-oryx_log && \
     mkdir /root/logs/mse_log && \
-    mkdir /root/shell
+    mkdir /root/shell && \
+	mkdir /root/cert
 # Add conf files,scripts
 ADD conf /root/sample_conf
 ADD shell /root/shell
 ADD README.md /root
+ADD cert /root/cert
 # Copy and link the files
-RUN cd /root/software/srs/trunk/conf && \
+RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
+	cd /root/software/srs/trunk/conf && \
     mv srs.conf srs.conf.bak && \
     ln -s /root/sample_conf/srsconfig.conf srs.conf && \
     ln -s /root/sample_conf/srsedge.conf srsedge.conf  && \
