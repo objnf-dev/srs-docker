@@ -20,9 +20,8 @@ It can also transcoding rhe live stream,and built-in HTTP Server can be used to 
 You can build a RTMP or HTTP-FLV cluster easily as well.
 
 ### Notice:
-1. HTML5 Player temporarily unsupported.  
-2. Some of the configurations are untested.Please take then at your own risk. 
-3. Go-oryx currectly does not support SRS v3.  
+1. Some of the configurations are untested.Please take then at your own risk. 
+2. Go-oryx currectly does not support SRS v3.  
 
 ### Pull command:  
 
