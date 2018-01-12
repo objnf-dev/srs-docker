@@ -33,19 +33,21 @@ You can build a RTMP or HTTP-FLV cluster easily as well.
 ```
 docker run -d \
         -p 443:443 \
-		-p 554:554 \
-		-p 1935:1935 \
-		-p 1985:1985 \
-		-p 2037:2037 \
-		-p 2038:2038 \
-		-p 2039:2039 \
-		-p 2040:2040 \
-		-p 8080:8080 \
-		-p 8081:8081 \
-		-p 8936:8936 \
-		-p 50000-51000:50000-51000 \
-		-p 57000-58000:57200-57300 \
-		zhouweitong/srs-docker:v3
+        -p 554:554 \
+        -p 1935:1935 \
+        -p 1985:1985 \
+        -p 2037:2037 \
+        -p 2038:2038 \
+        -p 2039:2039 \
+        -p 2040:2040 \
+        -p 8080:8080 \
+        -p 8081:8081 \
+        -p 8082:8082 \
+        -p 8443:8443 \
+        -p 8936:8936 \
+        -p 50000-51000:50000-51000 \
+        -p 57000-58000:57200-57300 \
+        zhouweitong/srs-docker:v3
 ```  
 It automatically runs `/bin/bash -c /root/start.sh` and starts the SRS server. 
 
@@ -72,6 +74,8 @@ HTTP API Control API using go-oryx:`2039`
 Go-oryx Worker Control API using go-oryx:`2040`  
 HTTP Server:`8080`  
 Websocket Server:`8081`  
+HTTP Server with CORS:`8082`  
+HTTP API via HTTPS Server Port:`8443`  
 HTTP-Flv Pushing:`8936`  
 RTSP using go-oryx:`50000-51000`  
 RTSP using SRS:`57000-58000` 
@@ -81,8 +85,12 @@ RTSP using SRS:`57000-58000`
 RTMP:`rtmp://<ip>/<app>/<stream>`  
 HLS:`http://<ip>:8080/hls/<app>/<stream>.m3u8`  
 HTTP Server:`http://<ip>:8080/`  
+HTTP with CORS server:`http://<ip>:8082/`  
+HTTPS Server:`https://<ip>/`  
+Websocket Server:`ws://<ip>:8081/`  
 HTTP Flv:`http://<ip>:8080/http/<app>/<stream>.flv`  
 Admin Consle:`http://<ip>:8080/srs-console/index.html`  
+
 Other links and settings,please refer to the config file.
 
 ### File settings:
