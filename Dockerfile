@@ -83,7 +83,7 @@ RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
     ln -s /root/shell/start_srs.sh /root/start.sh && \
     ln -s /root/shell/stop.sh /root/stop.sh && \
     ln -s /root/shell/start_srs_edge.sh /root/start_edge.sh && \
-	yum remove -y gcc gcc-c++ kernel-headers git go sudo wget automake autoconf make patch unzip && \
+	yum autoremove -y gcc gcc-c++ kernel-headers git go sudo wget automake autoconf make patch unzip && \
 	cd /root && \
 	find . -name '*.c' -type f -exec rm -rf {} \; && \
 	find . -name '*.o' -type f -exec rm -rf {} \; && \
@@ -91,7 +91,7 @@ RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
 	find . -name '*.cpp' -type f -exec rm -rf {} \; && \
 	find . -name '*.hpp' -type f -exec rm -rf {} \; && \
 	find . -name '*.go' -type f -exec rm -rf {} \; && \
-	find . -type d -empty -exec rm -rf {} \;
+	find . -type d -empty -delete
 # Setting up volumes
 VOLUME ["/root/software/go-oryx/conf","/root/software/srs/trunk/conf","/root/sample_conf","/root/shell","/root/logs"]
 # Expose ports
