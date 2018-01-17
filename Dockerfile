@@ -27,16 +27,13 @@ RUN yum update -y && \
     yum clean all && \
 # Create soft links for SRS
     cd /root && \
-    ln -s /root/software/srs/trunk trunk && \
     ln -s /root/software/srs/trunk srs && \
-    ln -s /root/software/srs/trunk/conf srs_conf && \
 # Build Go-oryx
     cd /root/software/go-oryx && \
     ./build.sh && \
     cd /root && \
 # Create soft links for go-oryx
     ln -s /root/software/go-oryx/shell go-oryx && \
-    ln -s /root/software/go-oryx/conf go-oryx_conf && \
 # Build and link http proxy
     cd /root/software/go-oryx/httpx-static && \
     go build main.go && \
@@ -48,10 +45,10 @@ RUN yum update -y && \
     go build mse.go && \
 # Add the SRS console
     cd /root/software/srs-ngb/trunk/research && \
-    cp -rf srs-console /root/software/srs/trunk/objs/nginx/html && \
+    \cp -rf srs-console /root/software/srs/trunk/objs/nginx/html && \
     rm -rf /root/software/srs/trunk/objs/nginx/html/srs-console/js/README.md && \
     cd /root/software/srs-ngb/trunk/src && \
-    cp -rf * /root/software/srs/trunk/objs/nginx/html/srs-console/js/ && \
+    \cp -rf * /root/software/srs/trunk/objs/nginx/html/srs-console/js/ && \
     cd /root && \
 # Create soft links
     ln -s /root/software/videojs-flow/demo videojs-flow && \
