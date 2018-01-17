@@ -1,9 +1,8 @@
 # Define base image
 FROM centos:latest
 # Setting up environment
-RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
-# Clean downloaded packages
-    yum clean all && \
+RUN yum update -y && \
+    yum install -y git go sudo bash psmisc bash-completion wget && \
 # Download source code
     mkdir /root/software && \
     cd /root/software && \
@@ -64,7 +63,18 @@ RUN yum install -y git go sudo bash psmisc net-tools bash-completion wget && \
     mkdir /root/logs/go-oryx_log && \
     mkdir /root/logs/mse_log && \
     mkdir /root/shell && \
-	mkdir /root/cert
+    mkdir /root/cert && \
+# Clean up
+    yum autoremove -y gcc gcc-c++ kernel-headers git go wget automake autoconf make patch unzip && \
+    rm -rf /root/go && \
+    cd /root/software && \
+    find . -name '*.c' -type f -exec rm -rf {} \; && \
+    find . -name '*.o' -type f -exec rm -rf {} \; && \
+    find . -name '*.h' -type f -exec rm -rf {} \; && \
+    find . -name '*.cpp' -type f -exec rm -rf {} \; && \
+    find . -name '*.hpp' -type f -exec rm -rf {} \; && \
+    find . -name '*.go' -type f -exec rm -rf {} \; && \
+    find . -type d -empty -delete
 # Add conf files,scripts
 ADD conf /root/sample_conf
 ADD shell /root/shell
@@ -72,7 +82,7 @@ ADD README.md /root
 ADD cert /root/cert
 # Copy and link the files
 RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
-	cd /root/software/srs/trunk/conf && \
+    cd /root/software/srs/trunk/conf && \
     mv srs.conf srs.conf.bak && \
     ln -s /root/sample_conf/srsconfig.conf srs.conf && \
     ln -s /root/sample_conf/srsedge.conf srsedge.conf  && \
@@ -91,6 +101,7 @@ EXPOSE 1935
 EXPOSE 1985
 EXPOSE 8080
 EXPOSE 8081
+EXPOSE 8082
 EXPOSE 443
 EXPOSE 8443
 # Startup Command
