@@ -63,7 +63,17 @@ RUN yum update -y && \
     mkdir /root/logs/go-oryx_log && \
     mkdir /root/logs/mse_log && \
     mkdir /root/shell && \
-	mkdir /root/cert
+	mkdir /root/cert && \
+# Clean up
+    yum autoremove -y gcc gcc-c++ kernel-headers git go sudo wget automake autoconf make patch unzip && \
+	cd /root && \
+	find . -name '*.c' -type f -exec rm -rf {} \; && \
+	find . -name '*.o' -type f -exec rm -rf {} \; && \
+	find . -name '*.h' -type f -exec rm -rf {} \; && \
+	find . -name '*.cpp' -type f -exec rm -rf {} \; && \
+	find . -name '*.hpp' -type f -exec rm -rf {} \; && \
+	find . -name '*.go' -type f -exec rm -rf {} \; && \
+	find . -type d -empty -delete
 # Add conf files,scripts
 ADD conf /root/sample_conf
 ADD shell /root/shell
@@ -82,16 +92,7 @@ RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
     chmod -R 777 /root/shell && \
     ln -s /root/shell/start_srs.sh /root/start.sh && \
     ln -s /root/shell/stop.sh /root/stop.sh && \
-    ln -s /root/shell/start_srs_edge.sh /root/start_edge.sh && \
-	yum autoremove -y gcc gcc-c++ kernel-headers git go sudo wget automake autoconf make patch unzip && \
-	cd /root && \
-	find . -name '*.c' -type f -exec rm -rf {} \; && \
-	find . -name '*.o' -type f -exec rm -rf {} \; && \
-	find . -name '*.h' -type f -exec rm -rf {} \; && \
-	find . -name '*.cpp' -type f -exec rm -rf {} \; && \
-	find . -name '*.hpp' -type f -exec rm -rf {} \; && \
-	find . -name '*.go' -type f -exec rm -rf {} \; && \
-	find . -type d -empty -delete
+    ln -s /root/shell/start_srs_edge.sh /root/start_edge.sh
 # Setting up volumes
 VOLUME ["/root/software/go-oryx/conf","/root/software/srs/trunk/conf","/root/sample_conf","/root/shell","/root/logs"]
 # Expose ports
