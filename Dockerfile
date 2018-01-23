@@ -93,7 +93,7 @@ RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
     ln -s /root/shell/stop.sh /root/stop.sh && \
     ln -s /root/shell/start_srs_edge.sh /root/start_edge.sh
 # Setting up volumes
-VOLUME ["/root/software/go-oryx/conf","/root/software/srs/trunk/conf","/root/sample_conf","/root/shell","/root/logs"]
+VOLUME ["/root/sample_conf","/root/shell","/root/logs"]
 # Expose ports
 EXPOSE 1935
 EXPOSE 1985

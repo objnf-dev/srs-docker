@@ -99,7 +99,6 @@ You can change them according to your own condition.
 
 ### Volume setting:  
 `/root/software` is the folder for the program files.  
-The two sub folders `go-oryx/conf` and `srs/trunk/conf` are the configuration files folder,which are mounted by default.  
 `/root/logs` is the folder for all the log files,and is mounted by default.  
 `/root/sample_conf` is the folder for sample configuration files,and it's mounted by default.  
 `/root/shell` is the folder for the sample starting&stoping scripts,and it's mounted by default.
