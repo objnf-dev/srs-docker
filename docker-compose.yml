@@ -1,5 +1,5 @@
 srsv2:
-    image:zhouweitong/srs-docker:v2
+    image: zhouweitong/srs-docker:v2
     ports:
         - 443:443
         - 554:554
@@ -17,6 +17,7 @@ srsv2:
         - 50000-51000:50000-51000
         - 57000-58000:57200-57300
     volumes:
-        - /tmp/srsv2/logs:/root/logs
-        - /tmp/srsv2/shell:/root/shell
-        - /tmp/srsv2/sample_conf :/root/sample_conf
+        - srsv2_logs:/root/logs
+        - srsv2_shell:/root/shell
+        - srsv2_sample_conf:/root/sample_conf
+        - srsv2_html:/root/software/srs/trunk/objs/nginx/html
