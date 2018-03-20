@@ -71,7 +71,7 @@ RUN yum update -y && \
     find . -name '*.cpp' -type f -exec rm -rf {} \; && \
     find . -name '*.hpp' -type f -exec rm -rf {} \; && \
     find . -name '*.go' -type f -exec rm -rf {} \; && \
-	find . -name '*.zip' -type f -exec rm -rf {} \; && \
+    find . -name '*.zip' -type f -exec rm -rf {} \; && \
     find . -type d -empty -delete
 # Add conf files,scripts
 ADD conf /root/sample_conf
