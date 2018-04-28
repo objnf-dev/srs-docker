@@ -77,7 +77,6 @@ RUN yum update -y && \
 ADD conf /root/sample_conf
 ADD shell /root/shell
 ADD README.md /root
-ADD cert /root/cert
 # Copy and link the files
 RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
     cd /root/software/srs/trunk/conf && \
