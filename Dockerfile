@@ -77,10 +77,8 @@ RUN yum update -y && \
 ADD conf /root/sample_conf
 ADD shell /root/shell
 ADD README.md /root
-ADD cert /root/cert
 # Copy and link the files
-RUN \cp -rf /root/cert/* /root/software/go-oryx/httpx-static && \
-    cd /root/software/srs/trunk/conf && \
+RUN cd /root/software/srs/trunk/conf && \
     mv srs.conf srs.conf.bak && \
     ln -s /root/sample_conf/srsconfig.conf srs.conf && \
     ln -s /root/sample_conf/srsedge.conf srsedge.conf  && \
@@ -98,8 +96,5 @@ VOLUME ["/root/sample_conf","/root/shell","/root/logs","/root/software/srs/trunk
 EXPOSE 1935
 EXPOSE 1985
 EXPOSE 8080
-EXPOSE 8081
-EXPOSE 443
-EXPOSE 8443
 # Startup Command
 CMD /bin/bash -c /root/start.sh
