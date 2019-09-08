@@ -4,7 +4,7 @@ FROM centos:latest
 RUN rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO && \
     curl -s https://mirror.go-repo.io/centos/go-repo.repo | tee /etc/yum.repos.d/go-repo.repo && \
     yum update -y && \
-    yum install -y git golang sudo bash psmisc bash-completion wget && \
+    yum install -y git golang sudo bash psmisc bash-completion speex pkg-config wget && \
     wget https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/linux/nasm-2.14.02-0.fc27.x86_64.rpm && \
     rpm -i ./nasm-2.14.02-0.fc27.x86_64.rpm && \
 # Download source code
