@@ -4,7 +4,7 @@ FROM centos:latest
 RUN rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO && \
     curl -s https://mirror.go-repo.io/centos/go-repo.repo | tee /etc/yum.repos.d/go-repo.repo && \
     yum update -y && \
-    yum install -y git golang sudo bash psmisc bash-completion wget && \
+    yum install -y git golang sudo bash psmisc nasm bash-completion wget && \
 # Download source code
     mkdir /root/software && \
     cd /root/software && \
@@ -64,7 +64,7 @@ RUN rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO && \
     mkdir /root/shell && \
     mkdir /root/cert && \
 # Clean up
-    yum autoremove -y gcc gcc-c++ kernel-headers git go wget automake autoconf make patch unzip && \
+    yum autoremove -y gcc gcc-c++ kernel-headers git golang nasm automake autoconf make patch unzip && \
     rm -rf /root/go && \
     cd /root/software && \
     find . -name '*.c' -type f -exec rm -rf {} \; && \
