@@ -2,7 +2,7 @@
 FROM centos:latest
 # Setting up environment
 RUN yum update -y && \
-    yum install -y git go sudo bash psmisc bash-completion wget && \
+    yum install -y git golang sudo bash psmisc bash-completion wget && \
 # Download source code
     mkdir /root/software && \
     cd /root/software && \
