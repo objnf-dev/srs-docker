@@ -1,18 +1,23 @@
-FROM golang:alpine
-RUN apk add git sudo bash psmisc net-tools && \
+# Multistage
+# Stage 1
+FROM golang:alpine as builder
+RUN apk add --no-cache --virtual .git git && \
     cd /root && \
     git clone https://github.com/gwuhaolin/livego.git && \
-    go get github.com/gwuhaolin/livego && \
     cd /root/livego && \
-    go build && \
-    mkdir /root/logs
-ADD shell /root
-ADD README.md /root
-RUN cd /root && \
-    chmod 777 start.sh && \
-    cd /root && \
-    chmod 777 stop.sh
-VOLUME ["/root/logs","/root/livego"]
-EXPOSE 1935
+    go build
 
-CMD /bin/bash -c /root/start.sh
+# Stage 2
+FROM alpine:latest
+RUN mkdir /app
+COPY --from=builder /root/livego/livego /app/
+COPY --from=builder /root/livego/livego.yaml /app/
+RUN chmod +x /app/livego
+
+VOLUME ["/app"]
+EXPOSE 1935
+EXPOSE 7001
+EXPOSE 7002
+EXPOSE 8090
+
+CMD /app/livego
