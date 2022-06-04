@@ -1,33 +1,35 @@
-# SRS 2.0 Docker Image
+# SRS 4.0 Docker Image
 
 ### Branches: 
 
-`release` branch is the file for SRS version 4, based on ubuntu:latest.  
+`release` branch is the file for SRS version 4, based on ubuntu:latest. 
 
-`develop` branch is the file for SRS version 5, based on ubuntu:latest.  
+`develop` branch is the file for SRS version 5, based on ubuntu:latest. 
 
-`livego-win` branch is an unofficial docker image of livego.  
+`livego-win` branch is an unofficial docker image of livego. 
 
-`mediasrv` branch is the file for ETS Mediasrv Media Server.  
+`mediasrv` branch is the file for ETS Mediasrv Media Server. 
 
-### Introduction:  
-This repository includes a demo of `Dockerfile` to build a docker image contains [SRS Media Server](https://github.com/ossrs/srs) on Ubuntu.  
+### Introduction: 
+This repository includes a demo of `Dockerfile` to build a docker image contains [SRS Media Server](https://github.com/ossrs/srs) on Ubuntu. 
 
-If you want to use the image directly,you can push a ready-made image([See it on Docker Hub](https://hub.docker.com/r/zhouweitong/srs-docker/)).Feel free to try it!  
+If you want to use the image directly,you can push a ready-made image ([See it on Docker Hub](https://hub.docker.com/r/zhouweitong/srs-docker/)). Feel free to try it! 
 
 ### Feature:
-Support RTMP,RTSP,HTTP-FLV,HTTP-AAC,HLS,HDS and many other streaming protols.  
-It can also transcoding rhe live stream,and built-in HTTP Server can be used to deliver player sites.  
+Support RTMP, RTSP, HTTP-FLV, HTTP-AAC, HLS, HDS and many other streaming protocols. 
+
+It can also transcoding the live stream, and built-in HTTP Server can be used to deliver player sites. 
+
 You can build a RTMP or HTTP-FLV cluster easily as well.
 
 ### Notice:
 Some of the configurations are untested.Please take then at your own risk. 
 
-### Pull command:  
+### Pull command: 
 
 `docker pull zhouweitong/srs-docker:latest`
 
-### Docker command sample:  
+### Docker command sample: 
 
 ```
 docker run -d \
@@ -42,7 +44,7 @@ docker run -d \
 It automatically runs `/bin/bash -c /root/start.sh` and starts the SRS server. 
 
 ### Structure: 
-![SRS Structure Mind Map](https://github.com/zhouweitong3/srs-docker/raw/v2/structure.png)  
+![SRS Structure Mind Map](https://raw.githubusercontent.com/objectnf/srs-docker/release/structure.png) 
 
 ### Customize settings:
 Run the container in the interactive mode:`docker run -it` along with the parameters above. 
@@ -57,39 +59,39 @@ Then you can do the following:
 
 ### Port Settings:
 
-HTTPS Server port:`443`  
+HTTPS Server port:`443` 
 
-RTSP main port:`554`  
+RTSP main port:`554` 
 
-RTMP:`1935`  
+RTMP:`1935` 
 
-HTTP API:`1985`  
+HTTP API:`1985` 
 
-HTTP Server:`8080`  
+HTTP Server:`8080` 
 
-WebSocket Server:`8081`  
+WebSocket Server:`8081` 
 
-HTTP Server with CORS:`8082`  
+HTTP Server with CORS:`8082` 
 
 ### Link Details: 
 
-RTMP:`rtmp://<ip>/<app>/<stream>`  
+RTMP:`rtmp://<ip>/<app>/<stream>` 
 
-HLS:`http://<ip>:8080/hls/<app>/<stream>.m3u8`  
+HLS:`http://<ip>:8080/hls/<app>/<stream>.m3u8` 
 
-HTTP Server:`http://<ip>:8080/`  
+HTTP Server:`http://<ip>:8080/` 
 
-HTTP with CORS server:`http://<ip>:8082/`  
+HTTP with CORS server:`http://<ip>:8082/` 
 
-HTTPS Server:`https://<ip>/`  
+HTTPS Server:`https://<ip>/` 
 
-WebSocket Server:`ws://<ip>:8081/`  
+WebSocket Server:`ws://<ip>:8081/` 
 
-HTTP Flv:`http://<ip>:8080/http/<app>/<stream>.flv`  
+HTTP Flv:`http://<ip>:8080/http/<app>/<stream>.flv` 
 
-Admin Consle:`http://<ip>:8080/srs-console/index.html`  
+Admin Consle:`http://<ip>:8080/srs-console/index.html` 
 
 Other links and settings,please refer to the config file.
 
-### Volume setting:  
+### Volume setting: 
 `/root/srs/trunk/objs/nginx` is the folder for the html files.
